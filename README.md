@@ -1,46 +1,46 @@
-# CURD-TS 正在开发中……
-一套基于TS的增删改查系统，前端语言Vue3.0、React、Angular，后端语言node+express，采用了三种数据库MySQL、MongoDB、SQLite编写。  
-A TS based add, delete, modify and query system, the front-end language vue3.0, react, angular, back-end language node + Express, using three kinds of database mysql, mongodb, SQLite  
+# Getting Started with Create React App
 
-## 文档地址
-https://xiaoxian521.github.io/zh/standard/
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## 结构介绍 
-① sql为数据库存放文件夹  
-② doc为文档编写存放文件夹  
-③ backend为后端项目存放文件夹  
-④ frontend为前端项目存放文件夹  
+## Available Scripts
 
-## Structure introduction 
-① SQL stores the folder for the database  
-② Doc write storage folder for documents  
-③ Backend stores the folder for the back-end project  
-④ Frontend stores the folder for the front-end project  
+In the project directory, you can run:
 
-## 前端对应代码存放目录
-vue => /frontend/vue-ts  
-react => /frontend/react-ts  
-angular => /frontend/angular-ts  
+### `yarn start`
 
-## Front end corresponding code storage directory
-vue => /frontend/vue-ts  
-react => /frontend/react-ts  
-angular => /frontend/angular-ts  
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## 注意点
-① 接口文档使用Swagger  
-② 编写者必须严格遵守项目中tslint编写规则  
-③ 编写者必须严格遵循代码命名语义化、提高代码可读性  
-④ 编写者编写代码完毕必须经过单元测试，保证代码可用性  
-⑤ 编写必须完全使用TypeScript，保证代码严谨性、可维护性  
-⑥ 编写者提交代码发生冲突，必须先解决，在推送，严禁使用git push -f origin 分支  
-⑦ 编写者无须在项目中放置.gitignore文件，如需加入别的git忽略请放在CURD-TS文件夹跟目录的.gitignore文件  
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## Attention point
-① Interface documents use swagger  
-② The author must strictly abide by the tslint writing rules in the project  
-③ The author must strictly follow the code naming semantics and improve the readability of the code  
-④ The author must go through the unit test to ensure the usability of the code  
-⑤ Typescript must be used completely to ensure code rigor and maintainability  
-⑥ If the code submitted by the writer conflicts, it must be resolved first. In pushing, GIT push - f origin branch is strictly prohibited  
-⑦ The author does not need to place the. Gitignore file in the project. If you want to add other git ignore, please put it in the curd-ts folder and the. Gitignore file in the directory
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
