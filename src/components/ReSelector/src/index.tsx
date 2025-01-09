@@ -1,13 +1,13 @@
+import "./index.css";
 import {
-  defineComponent,
+  unref,
   computed,
   nextTick,
   onBeforeMount,
-  getCurrentInstance,
-  unref
+  defineComponent,
+  getCurrentInstance
 } from "vue";
-import { addClass, removeClass, toggleClass } from "/@/utils/operate";
-import "./index.css";
+import { addClass, removeClass, toggleClass } from "@pureadmin/utils";
 
 const stayClass = "stay"; //鼠标点击
 const activeClass = "hs-on"; //鼠标移动上去
@@ -50,12 +50,11 @@ const props = {
 };
 
 export default defineComponent({
-  name: "Selector",
+  name: "ReSelector",
   props,
   emits: ["selectedVal"],
   setup(props, { emit }) {
     const instance = getCurrentInstance();
-    // eslint-disable-next-line vue/no-setup-props-destructure
     const currentValue = props.value;
 
     const rateDisabled = computed(() => {
@@ -254,23 +253,32 @@ export default defineComponent({
       });
 
       addClass(
-        instance.refs["hsdiv" + props.HsKey + item[0]],
+        instance.refs["hsdiv" + props.HsKey + item[0]] as Element,
         activeClass,
         stayClass
       );
-
-      addClass(instance.refs["hstd" + props.HsKey + item[0]], bothLeftSides);
 
       addClass(
-        instance.refs["hsdiv" + props.HsKey + item[1]],
+        instance.refs["hstd" + props.HsKey + item[0]] as Element,
+        bothLeftSides
+      );
+
+      addClass(
+        instance.refs["hsdiv" + props.HsKey + item[1]] as Element,
         activeClass,
         stayClass
       );
 
-      addClass(instance.refs["hstd" + props.HsKey + item[1]], bothRightSides);
+      addClass(
+        instance.refs["hstd" + props.HsKey + item[1]] as Element,
+        bothRightSides
+      );
 
       while (item[1] >= item[0]) {
-        addClass(instance.refs["hstd" + props.HsKey + item[0]], inRange);
+        addClass(
+          instance.refs["hstd" + props.HsKey + item[0]] as Element,
+          inRange
+        );
         item[0]++;
       }
     };
@@ -299,10 +307,12 @@ export default defineComponent({
                       cursor: unref(rateDisabled) ? "auto" : "pointer",
                       textAlign: "center"
                     }}
-                    key={key}>
+                    key={key}
+                  >
                     <div
                       ref={`hsdiv${props.HsKey}${key}`}
-                      class={`hs-item ${[unref(classes)[key] + key]}`}>
+                      class={`hs-item ${[unref(classes)[key] + key]}`}
+                    >
                       <span>{item}</span>
                     </div>
                   </td>

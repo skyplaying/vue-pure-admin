@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import AMapLoader from "@amap/amap-jsapi-loader";
 import { reactive, getCurrentInstance, onBeforeMount, onUnmounted } from "vue";
-import { mapJson } from "/@/api/mock";
-import { deviceDetection } from "/@/utils/deviceDetection";
-import greenCar from "/@/assets/green.png";
+import { deviceDetection } from "@pureadmin/utils";
+import AMapLoader from "@amap/amap-jsapi-loader";
+import { mapJson } from "@/api/mock";
+import car from "@/assets/car.png";
 
 export interface MapConfigureInter {
   on: Fn;
@@ -15,16 +15,16 @@ export interface MapConfigureInter {
   plugin?: Fn;
 }
 
-export interface mapInter {
-  loading: boolean;
-}
+defineOptions({
+  name: "Amap"
+});
 
 let MarkerCluster;
 let map: MapConfigureInter;
 
 const instance = getCurrentInstance();
 
-const mapSet: mapInter = reactive({
+const mapSet = reactive({
   loading: deviceDetection() ? false : true
 });
 
@@ -39,8 +39,8 @@ const complete = (): void => {
 
 onBeforeMount(() => {
   if (!instance) return;
-  let { MapConfigure } = instance.appContext.config.globalProperties.$config;
-  let { options } = MapConfigure;
+  const { MapConfigure } = instance.appContext.config.globalProperties.$config;
+  const { options } = MapConfigure;
 
   AMapLoader.load({
     key: MapConfigure.amapKey,
@@ -67,12 +67,12 @@ onBeforeMount(() => {
         gridSize: 80,
         maxZoom: 14,
         renderMarker(ctx) {
-          let { marker, data } = ctx;
+          const { marker, data } = ctx;
           if (Array.isArray(data) && data[0]) {
-            var { driver, plateNumber, orientation } = data[0];
-            var content = `<img style="transform: scale(1) rotate(${
+            const { driver, plateNumber, orientation } = data[0];
+            const content = `<img style="transform: scale(1) rotate(${
               360 - Number(orientation)
-            }deg);" src='${greenCar}' />`;
+            }deg);" src='${car}' />`;
             marker.setContent(content);
             marker.setLabel({
               direction: "bottom",
@@ -92,8 +92,8 @@ onBeforeMount(() => {
 
       // 获取模拟车辆信息
       mapJson()
-        .then(res => {
-          let points: object = res.info.map((v: any) => {
+        .then(({ data }) => {
+          const points: object = data.map(v => {
             return {
               lnglat: [v.lng, v.lat],
               ...v
@@ -122,19 +122,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div
-    id="mapview"
-    ref="mapview"
-    v-loading="mapSet.loading"
-    element-loading-text="地图加载中"
-    element-loading-spinner="el-icon-loading"
-    element-loading-background="rgba(0, 0, 0, 0.8)"
-  ></div>
+  <div id="mapview" ref="mapview" v-loading="mapSet.loading" />
 </template>
 
 <style lang="scss" scoped>
 #mapview {
-  height: 100%;
+  height: calc(100vh - 86px);
 }
 
 :deep(.amap-marker-label) {

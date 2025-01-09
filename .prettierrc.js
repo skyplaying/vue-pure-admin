@@ -1,7 +1,9 @@
-module.exports = {
+// @ts-check
+
+/** @type {import("prettier").Config} */
+export default {
   bracketSpacing: true,
-  jsxBracketSameLine: true,
   singleQuote: false,
-  arrowParens: 'avoid',
-  trailingComma: 'none'
+  arrowParens: "avoid",
+  trailingComma: "none"
 };

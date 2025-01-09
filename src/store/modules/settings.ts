@@ -1,30 +1,26 @@
 import { defineStore } from "pinia";
-import { store } from "/@/store";
-import { getConfig } from "/@/config";
+import { type setType, store, getConfig } from "../utils";
 
-interface SettingState {
-  title: string;
-  fixedHeader: boolean;
-}
-
-export const useSettingStore = defineStore({
-  id: "pure-setting",
-  state: (): SettingState => ({
+export const useSettingStore = defineStore("pure-setting", {
+  state: (): setType => ({
     title: getConfig().Title,
-    fixedHeader: getConfig().FixedHeader
+    fixedHeader: getConfig().FixedHeader,
+    hiddenSideBar: getConfig().HiddenSideBar
   }),
   getters: {
-    getTitle() {
-      return this.title;
+    getTitle(state) {
+      return state.title;
     },
-    getFixedHeader() {
-      return this.fixedHeader;
+    getFixedHeader(state) {
+      return state.fixedHeader;
+    },
+    getHiddenSideBar(state) {
+      return state.hiddenSideBar;
     }
   },
   actions: {
     CHANGE_SETTING({ key, value }) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (this.hasOwnProperty(key)) {
+      if (Reflect.has(this, key)) {
         this[key] = value;
       }
     },

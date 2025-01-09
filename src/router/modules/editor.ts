@@ -1,32 +1,23 @@
-import Layout from "/@/layout/index.vue";
+import { $t } from "@/plugins/i18n";
+import { editor } from "@/router/enums";
 
-const editorRouter = {
+export default {
   path: "/editor",
-  name: "reEditor",
-  component: Layout,
   redirect: "/editor/index",
   meta: {
-    icon: "el-icon-edit-outline",
-    title: "message.hseditor",
-    showLink: true,
-    rank: 2
+    icon: "ep:edit",
+    title: $t("menus.pureEditor"),
+    rank: editor
   },
   children: [
     {
       path: "/editor/index",
-      name: "reEditor",
-      component: () => import("/@/views/editor/index.vue"),
+      name: "Editor",
+      component: () => import("@/views/editor/index.vue"),
       meta: {
-        title: "message.hseditor",
-        showLink: true,
-        keepAlive: true,
-        extraIcon: {
-          svg: true,
-          name: "team-iconxinpin"
-        }
+        title: $t("menus.pureEditor"),
+        keepAlive: true
       }
     }
   ]
-};
-
-export default editorRouter;
+} satisfies RouteConfigsTable;

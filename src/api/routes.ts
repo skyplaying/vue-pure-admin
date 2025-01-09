@@ -1,5 +1,10 @@
-import { http } from "../utils/http";
+import { http } from "@/utils/http";
 
-export const getAsyncRoutes = (data?: object) => {
-  return http.request("get", "/getAsyncRoutes", data);
+type Result = {
+  success: boolean;
+  data: Array<any>;
+};
+
+export const getAsyncRoutes = () => {
+  return http.request<Result>("get", "/get-async-routes");
 };

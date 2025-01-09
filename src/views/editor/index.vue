@@ -1,47 +1,53 @@
-<script lang="ts">
-export default {
-  name: "reEditor"
-};
-</script>
-
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref, unref } from "vue";
-import WangEditor from "wangeditor";
+import { ref } from "vue";
+import { EditorBase, EditorMulti, EditorUpload } from "./components";
 
-// eslint-disable-next-line no-undef
-const editor = ref(null);
-const html = ref(null);
-let instance: WangEditor;
-
-onMounted(() => {
-  instance = new WangEditor(unref(editor));
-  Object.assign(instance.config, {
-    onchange() {
-      html.value = instance.txt.html();
-    }
-  });
-  instance.create();
+defineOptions({
+  name: "Editor"
 });
 
-onBeforeUnmount(() => {
-  instance.destroy();
-});
+const activeNames = ref("1");
 </script>
 
 <template>
-  <div>
-    <div ref="editor"></div>
-    <div :innerHTML="html"></div>
-  </div>
+  <el-card shadow="never">
+    <template #header>
+      <div class="card-header">
+        <span class="font-medium">
+          编辑器组件，采用开源的
+          <el-link
+            href="https://www.wangeditor.com"
+            target="_blank"
+            style="margin: 0 4px 5px; font-size: 16px"
+          >
+            Wangeditor
+          </el-link>
+        </span>
+      </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/editor"
+        target="_blank"
+      >
+        代码位置 src/views/editor
+      </el-link>
+    </template>
+    <el-collapse v-model="activeNames" accordion>
+      <el-collapse-item title="基础用法" name="1">
+        <EditorBase v-if="activeNames === '1'" />
+      </el-collapse-item>
+      <el-collapse-item title="多个富文本" name="2">
+        <EditorMulti v-if="activeNames === '2'" />
+      </el-collapse-item>
+      <el-collapse-item title="自定义图片上传" name="3">
+        <EditorUpload v-if="activeNames === '3'" />
+      </el-collapse-item>
+    </el-collapse>
+  </el-card>
 </template>
 
 <style lang="scss" scoped>
-:deep(.w-e-text-container) {
-  z-index: 99 !important;
-}
-
-:deep(.w-e-toolbar) {
-  z-index: 999 !important;
-  position: static;
+:deep(.el-collapse-item__header) {
+  padding-left: 10px;
 }
 </style>

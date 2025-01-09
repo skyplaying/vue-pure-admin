@@ -1,20 +1,42 @@
-export type RouteConfigs = {
-  path?: string;
-  parentPath?: string;
-  meta?: {
-    title?: string;
-    icon?: string;
-    showLink?: boolean;
-    savedPosition?: boolean;
-  };
+import type { IconifyIcon } from "@iconify/vue";
+const { VITE_HIDE_HOME } = import.meta.env;
+
+export const routerArrays: Array<RouteConfigs> =
+  VITE_HIDE_HOME === "false"
+    ? [
+        {
+          path: "/welcome",
+          meta: {
+            title: "menus.pureHome",
+            icon: "ep:home-filled"
+          }
+        }
+      ]
+    : [];
+
+export type routeMetaType = {
+  title?: string;
+  icon?: string | IconifyIcon;
+  showLink?: boolean;
+  savedPosition?: boolean;
+  auths?: Array<string>;
 };
 
-export type relativeStorageType = {
-  routesInStorage: Array<RouteConfigs>;
+export type RouteConfigs = {
+  path?: string;
+  query?: object;
+  params?: object;
+  meta?: routeMetaType;
+  children?: RouteConfigs[];
+  name?: string;
+};
+
+export type multiTagsType = {
+  tags: Array<RouteConfigs>;
 };
 
 export type tagsViewsType = {
-  icon: string;
+  icon: string | IconifyIcon;
   text: string;
   divided: boolean;
   disabled: boolean;
@@ -25,6 +47,7 @@ export interface setType {
   sidebar: {
     opened: boolean;
     withoutAnimation: boolean;
+    isClickCollapse: boolean;
   };
   device: string;
   fixedHeader: boolean;
@@ -34,31 +57,36 @@ export interface setType {
     withoutAnimation: boolean;
     mobile: boolean;
   };
+  hideTabs: boolean;
 }
 
-export const routerArrays: Array<RouteConfigs> = [
-  {
-    path: "/welcome",
-    parentPath: "/",
-    meta: {
-      title: "message.hshome",
-      icon: "el-icon-s-home",
-      showLink: true
-    }
-  }
-];
-
-export type childrenType = {
+export type menuType = {
+  id?: number;
+  name?: string;
   path?: string;
   noShowingChildren?: boolean;
-  children?: childrenType[];
+  children?: menuType[];
   value: unknown;
   meta?: {
     icon?: string;
     title?: string;
-    extraIcon?: {
-      svg?: boolean;
-      name?: string;
-    };
+    rank?: number;
+    showParent?: boolean;
+    extraIcon?: string;
   };
+  showTooltip?: boolean;
+  parentId?: number;
+  pathList?: number[];
+  redirect?: string;
 };
+
+export type themeColorsType = {
+  color: string;
+  themeColor: string;
+};
+
+export interface scrollbarDomType extends HTMLElement {
+  wrap?: {
+    offsetWidth: number;
+  };
+}

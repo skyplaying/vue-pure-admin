@@ -1,75 +1,164 @@
 <h1>vue-pure-admin</h1>
 
-[![license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin.svg)](LICENSE)
+![GitHub license](https://img.shields.io/github/license/pure-admin/vue-pure-admin?style=flat)
+![GitHub stars](https://img.shields.io/github/stars/pure-admin/vue-pure-admin?color=fa6470&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/pure-admin/vue-pure-admin?style=flat)
 
 **English** | [中文](./README.md)
 
 ## Introduction
 
-vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3`, `vite2`, `TypeScript`, `Element-Plus` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
+`vue-pure-admin` is an open source, free and out-of-the-box middle and backend management system template. Completely adopts `ECMAScript` module (`ESM`) specifications to write and organize code, using the latest `Vue3`, `Vite`, `Element-Plus`, `TypeScript`, `Pinia`, `Tailwindcss` and other mainstream technologies develop
+
+## R&D philosophy
+
+Seek innovation in stability and see the future in technology
+
+## Thin version (offering non-internationalized and internationalized versions)
+
+The simplified version is based on the shelf extracted from [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
+
+[Click to view the non-internationalized version](https://github.com/pure-admin/pure-admin-thin)  
+[Click to view Internationalization version](https://github.com/pure-admin/pure-admin-thin/tree/i18n)
+
+## Supporting video
+
+[Click me to view UI design](https://www.bilibili.com/video/BV17g411T7rq)  
+[Click me to view the rapid development tutorial](https://www.bilibili.com/video/BV1kg411v7QT)
+
+## Nanny-level documents
+
+[Click me to view vue-pure-admin documentation](https://pure-admin.cn/)  
+[Click me to view @pureadmin/utils documentation](https://pure-admin-utils.netlify.app)
+
+## Quality service, software outsourcing, sponsorship support
+
+[Click me for details](https://pure-admin.cn/pages/service/)
+
+## `js` version
+
+[Click me to view js version](https://pure-admin.cn/pages/js/)
+
+## `max` version
+
+[Click me to view the max version](https://pure-admin.cn/pages/max/)
+
+## Tauri
+
+[Click Watch Tauri](https://github.com/pure-admin/tauri-pure-admin)
+
+## Electron
+
+[Click Watch Electron](https://github.com/pure-admin/electron-pure-admin)
 
 ## Preview
 
-- [vue-pure-admin](http://yiming_chang.gitee.io/manages)
+[preview station](https://pure-admin.github.io/vue-pure-admin)
 
-Click to log in without password
+`PC`
 
 <p align="center">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5ee80eee1014fb4a53c5bb37574a5f5~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dec0672a62e141f3b7f626c22ff6c7ef~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f586f1353de74b1b88cc9f89fce2146e~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a28fc0af7ac44e3b8f30469cba4a9993~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a17e54329cda4d76aa9c1c4f2a4715d3~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d884fb611da74ee0bdc17c29014d0260~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abed44ac1f2744e897c28d1689bcb517~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf2f068650f44a0787c699f5a20c75a6~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/73c575dd06474731ad8ab9d853f1ddfd~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99389b90f5ac4db9b0d61d99dd9a1454~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1546f1c6014446db6c9983934aedc86~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cfb0093b77c34e87b094daaa4304bc2d~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fe133cc6db3245f9b1b37f231d040550~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3110a12d63e4f6fb314e60bf18bdb66~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/45b93ec453e3406a939affe65ddcc803~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdc2dc88c1ef4aafbaaade820442c986~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f4c91b162206485b88cc58a72ff54a01~tplv-k3u1fbpfcp-watermark.image">
+  <img alt="PureAdmin" src="https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/1.jpg">
+  <br />
+  <img alt="PureAdmin" src="https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/2.jpg">
+</p>
+
+`DarkMode`
+
+<p align="center">
+  <img alt="PureAdmin" src="https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/3.jpg">
+  <br />
+  <img alt="PureAdmin" src="https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/4.jpg">
+</p>
+
+`Mobile`
+
+<p align="center">
+  <img alt="PureAdmin" src="https://xiaoxian521.github.io/hyperlink/img/vue-pure-admin/5.jpg">
 </p>
 
 ### Use Gitpod
 
 Open the project in Gitpod (free online dev environment for GitHub) and start coding immediately.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/xiaoxian521/vue-pure-admin)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/pure-admin/vue-pure-admin)
 
-## Install and use
+## Install And Use
 
-- Get the project code
+### Pull code
+
+#### It is recommended to use `@pureadmin/cli` scaffolding
+
+<br/>
+<img src="https://xiaoxian521.github.io/hyperlink/gif/pure-admin-cli.gif" alt="pure-admin-cli" />
+
+1. Global installation
 
 ```bash
-git clone https://github.com/xiaoxian521/vue-pure-admin.git
-or
-git clone https://github.com.cnpmjs.org/xiaoxian521/vue-pure-admin.git
+npm install -g @pureadmin/cli
 ```
 
-- Installation dependencies
+2. Interactively select templates and create projects
+
+```bash
+pure create
+```
+
+[Click to view the detailed usage of @pureadmin/cli scaffolding](https://github.com/pure-admin/pure-admin-cli#pureadmincli)
+
+#### Pull from `GitHub`
+
+```bash
+git clone https://github.com/pure-admin/vue-pure-admin.git
+```
+
+#### Pulled from `Gitee`
+
+```bash
+git clone https://gitee.com/yiming_chang/vue-pure-admin.git
+```
+
+### Install dependencies
 
 ```bash
 cd vue-pure-admin
 
-yarn install
-
+pnpm install
 ```
 
-- run
+### Run platform
 
 ```bash
-yarn serve
+pnpm dev
 ```
 
-- build
+### Project packaging
 
 ```bash
-yarn build
+pnpm build
 ```
+
+## Docker support
+
+1. Customize the image named `vue-pure-admin` (please note that there is a dot `.` at the end of the command below, indicating that the `Dockerfile` file in the current path is used, and the path can be specified according to the actual situation)
+
+```bash
+docker build -t vue-pure-admin .
+```
+
+2. Port mapping and start the `docker` container (`8080:80`: indicates that the `80` port is used in the container, and the port is forwarded to the `8080` port of the host; `pure-admin`: indicates a custom container name; `vue-pure-admin`: indicates the custom image name)
+
+```bash
+docker run -dp 8080:80  --name pure-admin vue-pure-admin
+```
+
+After operating the above two commands, open `http://localhost:8080` in the browser to preview
+
+Of course, you can also operate the `docker` project through the [Docker Desktop](https://www.docker.com/products/docker-desktop/) visual interface, as shown below
+
+<p align="center">
+  <img alt="docker-desktop" width="100%" src="https://xiaoxian521.github.io/hyperlink/img/docker-desktop.jpg">
+</p>
 
 ## Change Log
 
@@ -77,7 +166,7 @@ yarn build
 
 ## How to contribute
 
-You are very welcome to join！[Raise an issue](https://github.com/xiaoxian521/vue-pure-admin/issues/new/choose) Or submit a Pull Request
+You are very welcome to join！[Raise an issue](https://github.com/pure-admin/vue-pure-admin/issues/new/choose) Or submit a Pull Request
 
 **Pull Request:**
 
@@ -87,29 +176,46 @@ You are very welcome to join！[Raise an issue](https://github.com/xiaoxian521/v
 4. Push your branch: `git push origin feat/xxxx`
 5. submit`pull request`
 
+## Special code contributions
+
+Thank you very much for your in-depth understanding of the source code and your outstanding contributions to the `pure-admin` organization ❤️
+
+|                 **Contributor**                 |                                 **SpecificCode**                                 |
+| :---------------------------------------------: | :------------------------------------------------------------------------------: |
+|       [hb0730](https://github.com/hb0730)       |    [code](https://github.com/pure-admin/vue-pure-admin/commits?author=hb0730)    |
+|         [o-cc](https://github.com/o-cc)         |     [code](https://github.com/pure-admin/vue-pure-admin/commits?author=o-cc)     |
+| [yj-liuzepeng](https://github.com/yj-liuzepeng) | [code](https://github.com/pure-admin/vue-pure-admin/commits?author=yj-liuzepeng) |
+|   [skyline523](https://github.com/skyline523)   |  [code](https://github.com/pure-admin/vue-pure-admin/commits?author=skyline523)  |
+| [shark-lajiao](https://github.com/shark-lajiao) | [code](https://github.com/pure-admin/vue-pure-admin/commits?author=shark-lajiao) |
+|      [WitMiao](https://github.com/WitMiao)      |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=WitMiao)    |
+|     [QFifteen](https://github.com/QFifteen)     |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=QFifteen)   |
+|      [edgexie](https://github.com/edgexie)      |   [code](https://github.com/pure-admin/vue-pure-admin/commits?author=edgexie)    |
+|       [way-jm](https://github.com/way-jm)       |    [code](https://github.com/pure-admin/vue-pure-admin/commits?author=way-jm)    |
+|   [simple-hui](https://github.com/simple-hui)   |  [code](https://github.com/pure-admin/vue-pure-admin/commits?author=simple-hui)  |
+
 ## Git Contribution submission specification
 
-- reference [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
+reference [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) specification ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
 
-  - `feat` Add new features
-  - `fix` Fix the problem/BUG
-  - `style` The code style is related and does not affect the running result
-  - `perf` Optimization/performance improvement
-  - `refactor` Refactor
-  - `revert` Undo edit
-  - `test` Test related
-  - `docs` Documentation/notes
-  - `chore` Dependency update/scaffolding configuration modification etc.
-  - `workflow` Workflow improvements
-  - `ci` Continuous integration
-  - `types` Type definition file changes
-  - `wip` In development
+- `feat` Add new features
+- `fix` Fix the problem/BUG
+- `style` The code style is related and does not affect the running result
+- `perf` Optimization/performance improvement
+- `refactor` Refactor
+- `revert` Undo edit
+- `test` Test related
+- `docs` Documentation/notes
+- `chore` Dependency update/scaffolding configuration modification etc.
+- `workflow` Workflow improvements
+- `ci` Continuous integration
+- `types` Type definition file changes
+- `wip` In development
 
 ## Browser support
 
-The `Chrome 80+` browser is recommended for local development
-
-Support modern browsers, not IE
+It is recommended to use `Chrome`, `Edge`, and `Firefox` browsers for local development. The author commonly uses the latest version of `Chrome` browser.  
+In actual use, I feel that `Firefox` is smoother in animation than other browsers, but the author is used to using `Chrome`. It depends on personal preference.  
+For more detailed browser compatibility support, please see [Which browsers does Vue support? ](https://vuejs.org/about/faq.html#what-browsers-does-vue-support) and [Vite browser compatibility](https://vitejs.dev/guide/build.html#browser-compatibility)
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -117,20 +223,22 @@ Support modern browsers, not IE
 
 ## Maintainer
 
-[xiaoxian521](https://github.com/xiaoxian521)
-
-## Donate
-
-If you think this project is helpful to you, you can help the author buy a cup of coffee to show your support!
-
-![donate](http://yiming_chang.gitee.io/manages/pay.jpg)
-
-## Exchange Group
-
-Please scan the code to join the WeChat exchange group, if you have any questions, you can communicate in the group!
-
-![group](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c5f882422bd47b5af691906ea994ccf~tplv-k3u1fbpfcp-watermark.awebp?)
+[xiaoxian521](https://github.com/xiaoxian521)、[Ten-K](https://github.com/Ten-K)
 
 ## License
 
-[MIT © xiaoxian521-2020](./LICENSE)
+Completely free and open source
+
+[MIT © 2020-present, pure-admin](./LICENSE)
+
+## `Star`
+
+Many thanks to the kind individuals who leave a star. Your support is much appreciated :heart:
+
+[![Stargazers repo roster for @pure-admin/vue-pure-admin](https://bytecrank.com/nastyox/reporoster/php/stargazersSVG.php?user=pure-admin&repo=vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/stargazers)
+
+## `Fork`
+
+It's so cool that you study hard :heart:
+
+[![Forkers repo roster for @pure-admin/vue-pure-admin](https://bytecrank.com/nastyox/reporoster/php/forkersSVG.php?user=pure-admin&repo=vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/network/members)

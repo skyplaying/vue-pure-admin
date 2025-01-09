@@ -1,68 +1,86 @@
-import { storageLocal } from "/@/utils/storage";
-import { deviceDetection } from "/@/utils/deviceDetection";
 import { defineStore } from "pinia";
-import { store } from "/@/store";
+import {
+  type appType,
+  store,
+  getConfig,
+  storageLocal,
+  deviceDetection,
+  responsiveStorageNameSpace
+} from "../utils";
 
-interface AppState {
-  sidebar: {
-    opened: boolean;
-    withoutAnimation: boolean;
-  };
-  layout: string;
-  device: string;
-}
-
-export const useAppStore = defineStore({
-  id: "pure-app",
-  state: (): AppState => ({
+export const useAppStore = defineStore("pure-app", {
+  state: (): appType => ({
     sidebar: {
-      opened: storageLocal.getItem("sidebarStatus")
-        ? !!+storageLocal.getItem("sidebarStatus")
-        : true,
-      withoutAnimation: false
+      opened:
+        storageLocal().getItem<StorageConfigs>(
+          `${responsiveStorageNameSpace()}layout`
+        )?.sidebarStatus ?? getConfig().SidebarStatus,
+      withoutAnimation: false,
+      isClickCollapse: false
     },
+    // 这里的layout用于监听容器拖拉后恢复对应的导航模式
     layout:
-      storageLocal.getItem("responsive-layout")?.layout.match(/(.*)-/)[1] ??
-      "vertical",
-    device: deviceDetection() ? "mobile" : "desktop"
+      storageLocal().getItem<StorageConfigs>(
+        `${responsiveStorageNameSpace()}layout`
+      )?.layout ?? getConfig().Layout,
+    device: deviceDetection() ? "mobile" : "desktop",
+    // 浏览器窗口的可视区域大小
+    viewportSize: {
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight
+    },
+    // 作用于 src/views/components/draggable/index.vue 页面，当离开页面并不会销毁 new Swap()，sortablejs 官网也没有提供任何销毁的 api
+    sortSwap: false
   }),
   getters: {
-    getSidebarStatus() {
-      return this.sidebar.opened;
+    getSidebarStatus(state) {
+      return state.sidebar.opened;
     },
-    getDevice() {
-      return this.device;
+    getDevice(state) {
+      return state.device;
+    },
+    getViewportWidth(state) {
+      return state.viewportSize.width;
+    },
+    getViewportHeight(state) {
+      return state.viewportSize.height;
     }
   },
   actions: {
-    TOGGLE_SIDEBAR() {
-      this.sidebar.opened = !this.sidebar.opened;
-      this.sidebar.withoutAnimation = false;
-      if (this.sidebar.opened) {
-        storageLocal.setItem("sidebarStatus", 1);
-      } else {
-        storageLocal.setItem("sidebarStatus", 0);
+    TOGGLE_SIDEBAR(opened?: boolean, resize?: string) {
+      const layout = storageLocal().getItem<StorageConfigs>(
+        `${responsiveStorageNameSpace()}layout`
+      );
+      if (opened && resize) {
+        this.sidebar.withoutAnimation = true;
+        this.sidebar.opened = true;
+        layout.sidebarStatus = true;
+      } else if (!opened && resize) {
+        this.sidebar.withoutAnimation = true;
+        this.sidebar.opened = false;
+        layout.sidebarStatus = false;
+      } else if (!opened && !resize) {
+        this.sidebar.withoutAnimation = false;
+        this.sidebar.opened = !this.sidebar.opened;
+        this.sidebar.isClickCollapse = !this.sidebar.opened;
+        layout.sidebarStatus = this.sidebar.opened;
       }
+      storageLocal().setItem(`${responsiveStorageNameSpace()}layout`, layout);
     },
-    CLOSE_SIDEBAR(withoutAnimation: boolean) {
-      storageLocal.setItem("sidebarStatus", 0);
-      this.sidebar.opened = false;
-      this.sidebar.withoutAnimation = withoutAnimation;
+    async toggleSideBar(opened?: boolean, resize?: string) {
+      await this.TOGGLE_SIDEBAR(opened, resize);
     },
-    TOGGLE_DEVICE(device: string) {
+    toggleDevice(device: string) {
       this.device = device;
-    },
-    async toggleSideBar() {
-      await this.TOGGLE_SIDEBAR();
-    },
-    closeSideBar(withoutAnimation) {
-      this.CLOSE_SIDEBAR(withoutAnimation);
-    },
-    toggleDevice(device) {
-      this.TOGGLE_DEVICE(device);
     },
     setLayout(layout) {
       this.layout = layout;
+    },
+    setViewportSize(size) {
+      this.viewportSize = size;
+    },
+    setSortSwap(val) {
+      this.sortSwap = val;
     }
   }
 });

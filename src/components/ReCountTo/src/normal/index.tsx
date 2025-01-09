@@ -1,16 +1,16 @@
 import {
-  defineComponent,
-  reactive,
-  computed,
   watch,
+  unref,
+  computed,
+  reactive,
   onMounted,
-  unref
+  defineComponent
 } from "vue";
 import { countToProps } from "./props";
-import { isNumber } from "/@/utils/is";
+import { isNumber } from "@pureadmin/utils";
 
 export default defineComponent({
-  name: "Normal",
+  name: "ReNormalCountTo",
   props: countToProps,
   emits: ["mounted", "callback"],
   setup(props, { emit }) {
@@ -61,7 +61,7 @@ export default defineComponent({
       state.rAF = requestAnimationFrame(count);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function pauseResume() {
       if (state.paused) {
         resume();
@@ -83,7 +83,7 @@ export default defineComponent({
       requestAnimationFrame(count);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     function reset() {
       state.startTime = null;
       cancelAnimationFrame(state.rAF);
@@ -169,7 +169,8 @@ export default defineComponent({
           style={{
             color: props.color,
             fontSize: props.fontSize
-          }}>
+          }}
+        >
           {state.displayValue}
         </span>
       </>
