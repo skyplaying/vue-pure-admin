@@ -1,18 +1,23 @@
 <script setup lang="ts">
-import { ref, unref, onMounted } from "vue";
-import LogicFlow from "@logicflow/core";
-import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
+import demoData from "./dataTurbo.json";
 import "@logicflow/core/dist/style/index.css";
 import "@logicflow/extension/lib/style/index.css";
-import { Control, NodePanel, DataDialog } from "/@/components/ReFlowChart";
-import { toLogicflowData } from "/@/components/ReFlowChart/src/adpterForTurbo";
-import { BpmnNode } from "/@/components/ReFlowChart/src/config";
-import demoData from "./dataTurbo.json";
 
-let lf = ref(null);
-let graphData = ref(null);
-let dataVisible = ref<boolean>(false);
-let config = ref({
+import LogicFlow from "@logicflow/core";
+import { ref, unref, onMounted } from "vue";
+import { BpmnNode } from "@/components/ReFlowChart/src/config";
+import { Snapshot, BpmnElement, Menu } from "@logicflow/extension";
+import { Control, NodePanel, DataDialog } from "@/components/ReFlowChart";
+import { toLogicflowData } from "@/components/ReFlowChart/src/adpterForTurbo";
+
+defineOptions({
+  name: "FlowChart"
+});
+
+const lf = ref(null);
+const graphData = ref(null);
+const dataVisible = ref<boolean>(false);
+const config = ref({
   grid: true,
   background: {
     color: "#f7f9ff"
@@ -21,7 +26,7 @@ let config = ref({
     enabled: true
   }
 });
-let nodeList = BpmnNode;
+const nodeList = BpmnNode;
 
 function initLf() {
   // 画布配置
@@ -32,7 +37,7 @@ function initLf() {
   LogicFlow.use(Menu);
   const domLf = new LogicFlow({
     ...unref(config),
-    container: document.querySelector("#LF-Turbo")
+    container: document.querySelector("#turbo")
   });
   lf.value = domLf;
   // 设置边类型bpmn:sequenceFlow为默认类型
@@ -57,41 +62,70 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="logic-flow-view">
-    <!-- 辅助工具栏 -->
-    <Control
-      class="demo-control"
-      v-if="lf"
-      :lf="lf"
-      :catTurboData="false"
-      @catData="catData"
-    ></Control>
-    <!-- 节点面板 -->
-    <NodePanel :lf="lf" :nodeList="nodeList"></NodePanel>
-    <!-- 画布 -->
-    <div id="LF-Turbo"></div>
-    <!-- 数据查看面板 -->
-    <el-dialog title="数据" v-model="dataVisible" width="50%">
-      <DataDialog :graphData="graphData"></DataDialog>
-    </el-dialog>
-  </div>
+  <el-card shadow="never">
+    <template #header>
+      <div class="card-header">
+        <span class="font-medium">
+          流程图组件，采用开源的
+          <el-link
+            href="https://site.logic-flow.cn/docs/#/zh/guide/start"
+            target="_blank"
+            style="margin: 0 4px 5px; font-size: 16px"
+          >
+            LogicFlow
+          </el-link>
+        </span>
+      </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/flow-chart"
+        target="_blank"
+      >
+        代码位置 src/views/flow-chart
+      </el-link>
+    </template>
+    <div class="logic-flow-view">
+      <!-- 辅助工具栏 -->
+      <Control
+        v-if="lf"
+        class="demo-control"
+        :lf="lf"
+        :catTurboData="false"
+        @catData="catData"
+      />
+      <!-- 节点面板 -->
+      <NodePanel v-if="lf" :lf="lf" :nodeList="nodeList" />
+      <!-- 画布 -->
+      <div id="turbo" />
+      <!-- 数据查看面板 -->
+      <el-dialog
+        v-model="dataVisible"
+        class="flow-dialog"
+        title="数据"
+        width="50%"
+      >
+        <el-scrollbar>
+          <DataDialog :graphData="graphData" />
+        </el-scrollbar>
+      </el-dialog>
+    </div>
+  </el-card>
 </template>
 
 <style scoped>
-#LF-Turbo {
-  width: 100vw;
-  height: 85vh;
-  outline: none;
+#turbo {
+  width: 100%;
+  height: 65vh;
 }
 
 .logic-flow-view {
-  margin: 10px;
   position: relative;
+  margin: 10px;
 }
 
 .demo-title {
-  text-align: center;
   margin: 20px;
+  text-align: center;
 }
 
 .demo-control {
@@ -108,14 +142,27 @@ onMounted(() => {
 .add-panel {
   position: absolute;
   z-index: 11;
-  background-color: white;
   padding: 10px 5px;
+  background-color: white;
 }
 
 .el-drawer__body {
-  height: 80%;
-  overflow: auto;
-  margin-top: -30px;
   z-index: 3;
+  height: 80%;
+  margin-top: -30px;
+  overflow: auto;
+}
+
+:deep(.flow-dialog) {
+  position: relative;
+  top: 5vh;
+  left: 0;
+  margin: 0 auto;
+  transform: none;
+}
+
+:deep(.flow-dialog) .el-dialog__body {
+  height: 85vh;
+  overflow: auto;
 }
 </style>

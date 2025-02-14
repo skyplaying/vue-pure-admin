@@ -1,49 +1,64 @@
 {
-  // You should install these plugins:
-  // ESLint
-  // Prettier - Code formatter
-  // stylelint
-  // vscode-icons
-  // TypeScript Vue Plugin (Volar)
-  // Vue Language Features (Volar)
-  "terminal.integrated.rendererType": "dom",
   "editor.formatOnType": true,
   "editor.formatOnSave": true,
-  "window.zoomLevel": 1,
-  "javascript.updateImportsOnFileMove.enabled": "always",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
   "editor.tabSize": 2,
   "editor.formatOnPaste": true,
+  "editor.guides.bracketPairs": "active",
   "files.autoSave": "afterDelay",
   "git.confirmSync": false,
   "workbench.startupEditor": "newUntitledFile",
   "editor.suggestSelection": "first",
   "editor.acceptSuggestionOnCommitCharacter": false,
   "css.lint.propertyIgnoredDueToDisplay": "ignore",
-  // Prevent inline styles from being automatically formatted to all lowercase
   "editor.quickSuggestions": {
     "other": true,
     "comments": true,
     "strings": true
   },
-  // Automatically fix some syntax errors of ts
-  "tslint.autoFixOnSave": true,
   "files.associations": {
-    // Specifies the location of snippets in the suggestion widget
     "editor.snippetSuggestions": "top"
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.userWords": ["sourcemap", "vite"],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
-  "volar.tsPlugin": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "i18n-ally.localesPaths": "locales",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sortKeys": true,
+  "i18n-ally.namespace": true,
+  "i18n-ally.enabledParsers": [
+    "yaml",
+    "js"
+  ],
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.enabledFrameworks": [
+    "vue"
+  ],
+  "iconify.excludes": [
+    "el"
+  ],
+  "vsmqtt.brokerProfiles": [
+    {
+      "name": "broker.emqx.io",
+      "host": "broker.emqx.io/mqtt",
+      "port": 1883,
+      "clientId": "vsmqtt_client_db34"
+    }
+  ],
+  "vscodeCustomCodeColor.highlightValue": [
+    "v-loading",
+    "v-auth",
+    "v-copy",
+    "v-longpress",
+    "v-optimize",
+    "v-perms",
+    "v-ripple"
+  ],
+  "vscodeCustomCodeColor.highlightValueColor": "#b392f0",
 }
